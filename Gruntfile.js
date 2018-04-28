@@ -24,7 +24,7 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-grunt.loadNpmTasks('grunt-connect-proxy');
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -78,9 +78,9 @@ grunt.loadNpmTasks('grunt-connect-proxy');
       },
       proxies: [{
 //TODCHANGE
-      context: '/data-service-path', // the context of the data service
-      host: 'localhost', // wherever the data service is running
-      port: 8080 // the port that the data service is running on
+        context: '/data-service-path', // the context of the data service
+        host: 'localhost', // wherever the data service is running
+        port: 8080 // the port that the data service is running on
       }],
       livereload: {
         options: {
@@ -98,8 +98,8 @@ grunt.loadNpmTasks('grunt-connect-proxy');
               ),
               connect.static(appConfig.app)
             ];
-           middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
-	return middlewares;
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+            return middlewares;
           }
         }
       },
@@ -107,7 +107,7 @@ grunt.loadNpmTasks('grunt-connect-proxy');
         options: {
           port: 9001,
           middleware: function (connect) {
-	var middlewares = [
+            var middlewares = [
               connect.static('.tmp'),
               connect.static('test'),
               connect().use(
@@ -116,9 +116,9 @@ grunt.loadNpmTasks('grunt-connect-proxy');
               ),
               connect.static(appConfig.app)
             ];
-        middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
- 
-	return middlewares;
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+            return middlewares;
 
           }
         }
@@ -224,20 +224,20 @@ grunt.loadNpmTasks('grunt-connect-proxy');
         fileTypes:{
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -483,7 +483,7 @@ grunt.loadNpmTasks('grunt-connect-proxy');
       'wiredep',
       'concurrent:server',
       'postcss:server',
-      'configureProxies:server', // added just before connect
+      'configureProxies:server', // added just before connect
       'connect:livereload',
       'watch'
     ]);
